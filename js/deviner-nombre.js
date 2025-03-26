@@ -43,9 +43,10 @@ function saisieUtilisateur() {
  * Test si le nombre mystère est plus petit, plus grand ou égal à la saisie utilisateur
  * @param nombreMystere
  * @param saisieUtilisateur
+ * @param nombreEssais
  * @returns {boolean}
  */
-function testerNombre(nombreMystere, saisieUtilisateur) {
+function testerNombre(nombreMystere, saisieUtilisateur, nombreEssais) {
     if (nombreMystere !== saisieUtilisateur) {
         if (nombreMystere < saisieUtilisateur) {
             alert(`C'est moins que ${saisieUtilisateur} ! (${nombreMystere})`);
@@ -55,7 +56,8 @@ function testerNombre(nombreMystere, saisieUtilisateur) {
             return false;
         }
     } else {
-        alert(`Félicitations, c'était bien ${saisieUtilisateur} !`);
+        alert(`Félicitations, c'était bien ${saisieUtilisateur} !
+               \nTrouvé en ${nombreEssais} essais !`);
         return true;
     }
 }
@@ -67,10 +69,12 @@ function jouer() {
     let nombreMystere = tireNombre(50, 100);
     let saisie = ``;
     let nombreTrouve = false;
+    let nombreEssais = 0;
 
     do {
         saisie = saisieUtilisateur();
-        nombreTrouve = testerNombre(nombreMystere, saisie);
+        nombreEssais++;
+        nombreTrouve = testerNombre(nombreMystere, saisie, nombreEssais);
     } while (!nombreTrouve);
 }
 
