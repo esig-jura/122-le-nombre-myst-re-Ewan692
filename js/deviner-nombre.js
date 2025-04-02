@@ -7,6 +7,9 @@
 
 'use strict';
 
+const MIN = 1;
+const MAX = 100;
+
 /**
  * Retourne un nombre entier aléatoire compris entre min et max
  * @param {number} min
@@ -26,7 +29,7 @@ function saisieUtilisateur() {
     let isNumber = false;
 
     do {
-        saisie = prompt(`Choisis un nombre de 1 à 100 et tente ta chance !`);
+        saisie = prompt(`Choisis un nombre de ${MIN} à ${MAX} et tente ta chance !`);
 
         if (isNaN(parseInt(saisie))) {
             alert(`La saisie \"${saisie}\" n'est pas un nombre !`);
@@ -66,7 +69,7 @@ function testerNombre(nombreMystere, saisieUtilisateur, nombreEssais) {
  * Gère l'appe des fonctions du jeu du nombre mystère
  */
 function jouer() {
-    let nombreMystere = tireNombre(50, 100);
+    let nombreMystere = tireNombre(MIN, MAX);
     let saisie = ``;
     let nombreTrouve = false;
     let nombreEssais = 0;
